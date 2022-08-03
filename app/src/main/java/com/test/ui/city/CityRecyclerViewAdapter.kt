@@ -1,27 +1,24 @@
 package com.test.ui.city
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.test.R
-import com.test.databinding.FragmentCityListBinding
-
-import com.test.ui.city.placeholder.PlaceholderContent.PlaceholderItem
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.test.databinding.FragmentCityListItemBinding
+import com.test.domain.model.entity.CityEntity
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class CityRecyclerViewAdapter(
-    private val values: List<PlaceholderItem>
-) : RecyclerView.Adapter<CityRecyclerViewAdapter.ViewHolder>() {
+class CityRecyclerViewAdapter() : ListAdapter<CityEntity, RecyclerView.ViewHolder>(DiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        return ViewHolder(
-            FragmentCityListBinding.inflate(
+        return ViewHolderListItem(
+            FragmentCityListItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -30,21 +27,33 @@ class CityRecyclerViewAdapter(
 
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val item = getItem(position)
+        when(holder){
+            is ViewHolderListItem -> { holder.cityName.text = item.name}
+        }
     }
 
-    override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: FragmentCityListBinding) :
+    //override fun getItemCount(): Int = values.size
+
+    inner class ViewHolderListItem(binding: FragmentCityListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
+        val cityName: TextView = binding.cityName
+        //val contentView: TextView = binding.content
 
         override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
+            return super.toString() + " '" + "contentView.text" + "'"
+        }
+    }
+
+    class DiffCallback : DiffUtil.ItemCallback<CityEntity>() {
+        override fun areItemsTheSame(oldItem: CityEntity, newItem: CityEntity): Boolean {
+            return oldItem.id == oldItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: CityEntity, newItem: CityEntity): Boolean {
+            return oldItem.toString() == newItem.toString()
         }
     }
 

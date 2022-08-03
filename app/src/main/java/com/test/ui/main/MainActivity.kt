@@ -1,17 +1,14 @@
 package com.test.ui.main
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.Menu
+import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
-import androidx.activity.viewModels
-import androidx.lifecycle.viewModelScope
-import androidx.navigation.fragment.findNavController
 import com.test.R
 import com.test.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,9 +32,6 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.fab.setOnClickListener {
-            navController.navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
         mainViewModel.download()
     }
 

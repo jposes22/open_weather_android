@@ -10,4 +10,7 @@ interface CityDao : BaseDao<CityEntity> {
 
     @Query("select * from cityentity")
     fun getAll(): Flow<CityEntity>
+
+    @Query("select * from cityentity where name LIKE '%' || :name || '%'")
+    fun findAllByName(name: String): Flow<List<CityEntity>>
 }

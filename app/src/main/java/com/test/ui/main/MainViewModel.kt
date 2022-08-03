@@ -14,7 +14,6 @@ class MainViewModel @Inject constructor(
     private val cityRepository: CityRepository,
 ): ViewModel() {
 
-
     fun download(){
         viewModelScope.launch(Dispatchers.IO) {
             cityRepository.updateCityOnDatabase()
