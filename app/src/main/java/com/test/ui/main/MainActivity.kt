@@ -12,7 +12,9 @@ import android.view.MenuItem
 import androidx.activity.viewModels
 import com.test.R
 import com.test.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+        mainViewModel.download()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
