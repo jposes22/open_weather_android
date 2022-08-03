@@ -10,6 +10,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.findNavController
 import com.test.R
 import com.test.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,9 +35,8 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        binding.fab.setOnClickListener {
+            navController.navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
         mainViewModel.download()
     }
