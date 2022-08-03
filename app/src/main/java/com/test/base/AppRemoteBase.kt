@@ -1,7 +1,7 @@
-package com.base
+package com.test.base
 
 
-import com.domain.remote.BaseRemoteApi
+import com.test.domain.remote.BaseRemoteApi
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

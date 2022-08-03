@@ -1,4 +1,4 @@
-package com.domain.remote
+package com.test.domain.remote
 
 interface BaseRemoteApi {
     /**

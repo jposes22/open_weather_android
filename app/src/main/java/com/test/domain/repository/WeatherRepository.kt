@@ -1,7 +1,7 @@
-package com.domain.repository
+package com.test.domain.repository
 
 import android.content.Context
-import com.domain.remote.BaseRemoteApi
+import com.test.domain.remote.BaseRemoteApi
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton

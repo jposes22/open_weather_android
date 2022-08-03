@@ -1,4 +1,4 @@
-package com.domain.dao
+package com.test.domain.dao
 
 import androidx.room.Delete
 import androidx.room.Insert
