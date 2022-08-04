@@ -34,7 +34,7 @@
         android:id="@+id/CityListFragment"
         android:name="com.test.ui.city.CityListFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_city_list_list">
+        tools:layout="@layout/fragment_city_list">
 
         <action
             android:id="@+id/action_MainActivity_to_CityListFragment"

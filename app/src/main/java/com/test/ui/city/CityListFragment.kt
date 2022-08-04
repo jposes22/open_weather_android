@@ -4,20 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.test.R
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.test.databinding.FragmentCityListBinding
 import kotlinx.coroutines.launch
 
 /**
@@ -26,8 +20,14 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CityListFragment : Fragment() {
+    private var _binding: FragmentCityListBinding? = null
+
     private val viewModel: CityListViewModel by viewModels()
     private lateinit var adapter: CityRecyclerViewAdapter
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,14 +37,10 @@ class CityListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_city_list, container, false)
-        // Set the adapter
-        val recyclerView = view.findViewById<RecyclerView>(R.id.cityListRecyclerView)
-        val cityNameSearch = view.findViewById<EditText>(R.id.cityNameEditText)
-        cityNameSearch.addTextChangedListener {
-            lifecycleScope.launch(Dispatchers.IO) { viewModel.cityName.emit(it.toString())
-            }
-        }
+        _binding = FragmentCityListBinding.inflate(inflater, container, false)
+        _binding!!.lifecycleOwner = viewLifecycleOwner
+        _binding!!.viewModel = viewModel
+        val recyclerView = binding.cityListRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
         adapter = CityRecyclerViewAdapter()
         recyclerView.adapter = adapter
@@ -55,7 +51,11 @@ class CityListFragment : Fragment() {
                 }
             }
         }
+        return binding.root
+/*
+        // Set the adapter
 
-        return view
+
+        return view*/
     }
 }
