@@ -1,6 +1,7 @@
 package com.test.domain.repository
 
 import android.content.Context
+import com.test.domain.model.remote.response.WeatherResponse
 import com.test.domain.remote.BaseRemoteApi
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -13,14 +14,13 @@ class WeatherRepository @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
 
-    /*
-    suspend fun getWeather(page: Int, pageSize: Int): List<WeatherObject> {
+    suspend fun getWeatherByCityId(cityId:Long) {
         return try {
+            val result = baseRemoteApi.getWeatherByCityId(cityId)
             //ResourceDto.Success(baseRemoteApi.getAlarms().content)
-            ResourceDto.Success(getTemporalMock(page, pageSize))
+            //ResourceDto.Success(getTemporalMock(page, pageSize))
         } catch (e: Exception) {
-            handleException(e)
+            //handleException(e)
         }
     }
-  */
 }

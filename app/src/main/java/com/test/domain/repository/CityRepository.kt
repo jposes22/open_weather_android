@@ -31,6 +31,10 @@ class CityRepository @Inject constructor(
         return cityDao.findAllByName(name)
     }
 
+    fun findAllById(id:Long): Flow<CityEntity>{
+        return cityDao.findById(id)
+    }
+
     private fun readJSONFromAsset(): List<CityDto> {
         try {
             val itemType = object : TypeToken<List<CityDto>>() {}.type

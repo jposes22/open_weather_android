@@ -3,6 +3,7 @@ buildscript {
         hilt_version = '2.40.1'
         lifecycle_version = "2.5.1"
         retrofit_version = "2.9.0"
+        okhttp_version = "4.9.0"
     }
     dependencies {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"

@@ -1,9 +1,16 @@
 package com.test.domain.remote
 
+import com.test.base.AppRemoteBase
+import com.test.domain.model.remote.response.WeatherResponse
+import retrofit2.http.GET
+import retrofit2.http.Query
+
 interface BaseRemoteApi {
-    /**
-    @GET("someWS")
-    suspend fun getWeather(): List<WeatherResponse>
-     **/
+
+    @GET("2.5/weather")
+    suspend fun getWeatherByCityId(
+        @Query("id") cityId: Long,
+        @Query("appid") apikey: String = AppRemoteBase.ApiId
+    ): WeatherResponse
 
 }
