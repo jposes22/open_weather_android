@@ -30,7 +30,10 @@ class CityRecyclerViewAdapter() : ListAdapter<CityEntity, RecyclerView.ViewHolde
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
         when(holder){
-            is ViewHolderListItem -> { holder.cityName.text = item.name}
+            is ViewHolderListItem -> {
+                holder.cityName.text = item.name
+                holder.countryName.text = item.country
+            }
         }
     }
 
@@ -40,7 +43,7 @@ class CityRecyclerViewAdapter() : ListAdapter<CityEntity, RecyclerView.ViewHolde
     inner class ViewHolderListItem(binding: FragmentCityListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val cityName: TextView = binding.cityName
-        //val contentView: TextView = binding.content
+        val countryName: TextView = binding.textViewCountry
 
         override fun toString(): String {
             return super.toString() + " '" + "contentView.text" + "'"
