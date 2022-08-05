@@ -14,6 +14,20 @@ import com.test.R
 import com.test.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+//LSIT OF TODOS SORT BY PRIORITY. SURELY IT HAVE TO GROW A LOT
+
+//TODO: HIGH PRIO DECISION: Content and utility of Fragments
+//TODO: Search and implement a weather library ESSENTIAL PRIO https://github.com/KwabenBerko/OpenWeatherMap-Android-Library
+//TODO: click listener in cities searcher to add it in a List<city> to make a "fav list" easily accessible to the user AND MAYBE select one of them to set as main city HIGH PRIO
+//TODO: Make relation between our cities database and weather info HIGH PRIO
+//TODO: FIRST FRAGMENT. See saved cities and their weather resume OR see ONE saved city and have an access to another less important... MEDIUM/HIGH PRIO
+//TODO: 2ND FRAGMENT. Use it to see the List<City> if it isnt in the FIRST FRAG or use it to expand information of a city of the observable List of FIRST FRAGMENT... MEDIUM PRIO
+//TODO: make design decisions, theme, colors, text size... LOW PRIO
+//TODO: Search for a library to replace countryName (fragment_city_list_item.xml) to flags and maybe implement this function LOW PRIO (more accesible app)
+//TODO: App should save data of ONE city OR MORE to offline consult LOW PRIO
+//TODO: "onTouchEvent(MotionEvent event)" to change color of search bar item on click LOW PRIO
+//TODO: Comment existing code to better understanding
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
