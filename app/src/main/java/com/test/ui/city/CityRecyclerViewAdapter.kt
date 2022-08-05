@@ -1,11 +1,15 @@
 package com.test.ui.city
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.test.base.flagLoad
 import com.test.databinding.FragmentCityListItemBinding
 import com.test.domain.model.entity.CityEntity
 
@@ -13,7 +17,7 @@ import com.test.domain.model.entity.CityEntity
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class CityRecyclerViewAdapter() : ListAdapter<CityEntity, RecyclerView.ViewHolder>(DiffCallback()) {
+class CityRecyclerViewAdapter(var context: Context) : ListAdapter<CityEntity, RecyclerView.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -29,10 +33,16 @@ class CityRecyclerViewAdapter() : ListAdapter<CityEntity, RecyclerView.ViewHolde
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
+
         when(holder){
             is ViewHolderListItem -> {
+
+                holder.countryFlag.flagLoad(context, item.country)
+
+
                 holder.cityName.text = item.name
-                holder.countryName.text = item.country
+
+
             }
         }
     }
@@ -43,7 +53,7 @@ class CityRecyclerViewAdapter() : ListAdapter<CityEntity, RecyclerView.ViewHolde
     inner class ViewHolderListItem(binding: FragmentCityListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val cityName: TextView = binding.cityName
-        val countryName: TextView = binding.textViewCountry
+        val countryFlag: ImageView = binding.imageViewFlag
 
         override fun toString(): String {
             return super.toString() + " '" + "contentView.text" + "'"
