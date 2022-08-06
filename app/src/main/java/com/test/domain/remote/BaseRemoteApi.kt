@@ -10,7 +10,8 @@ interface BaseRemoteApi {
     @GET("2.5/weather")
     suspend fun getWeatherByCityId(
         @Query("id") cityId: Long,
-        @Query("appid") apikey: String = AppRemoteBase.ApiId
+        @Query("appid") apikey: String = AppRemoteBase.ApiId,
+        @Query("units") units: String = "metric"
     ): WeatherResponse
 
 }
