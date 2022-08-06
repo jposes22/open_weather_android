@@ -3,6 +3,15 @@ package com.test.domain.model.remote.response
 import com.google.gson.annotations.SerializedName
 
 class WeatherResponse {
+    @SerializedName("id")
+    var id:Long? = null
+
+    @SerializedName("name")
+    var name:String? = null
+
+    @SerializedName("cod")
+    var cod:Int? = null
+
     @SerializedName("coord")
     var coordinatesResponse:WeatherCoordinatesResponse? = null
 
@@ -10,7 +19,7 @@ class WeatherResponse {
     var weather:List<WeatherWeatherResponse>? = null
 
     @SerializedName("base")
-    var stations:String? = null
+    var base:String? = null
 
     @SerializedName("dt")
     var date:Long? = null
@@ -27,10 +36,12 @@ class WeatherCoordinatesResponse{
 }
 
 class WeatherWeatherResponse{
-    @SerializedName("lon")
-    var latitude:Float? = null
-    @SerializedName("lat")
-    var longitude:Float? = null
+    @SerializedName("id")
+    var id:Int? = null
+    @SerializedName("main")
+    var main:Float? = null
+    @SerializedName("icon")
+    var icon:Float? = null
 }
 
 class WeatherInfo{

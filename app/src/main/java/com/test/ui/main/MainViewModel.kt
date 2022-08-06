@@ -7,8 +7,6 @@ import com.test.domain.repository.CityRepository
 import com.test.domain.repository.WeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,22 +16,15 @@ class MainViewModel @Inject constructor(
     private val cityRepository: CityRepository,
     private val weatherRepository: WeatherRepository,
     private val sharedPreferencesManager: SharedPreferencesManager
-): ViewModel() {
+) : ViewModel() {
 
-    fun updateDataIfNeeded(){
+    fun updateDataIfNeeded() {
         viewModelScope.launch(Dispatchers.IO) {
-            weatherRepository.getWeatherByCityId(3118848L)
-            //Madrid - 1704129
-            //Las Rozas de Madrid - 3118848
-            //Comunidad de Madrid - 3117732
-            //Madrid - 3117735
-        }
-        if(sharedPreferencesManager.getIsFirstTime()) {
-            viewModelScope.launch(Dispatchers.IO) {
+            if (sharedPreferencesManager.getIsFirstTime()) {
                 cityRepository.updateCityOnDatabase()
                 sharedPreferencesManager.setFirstTime(false)
             }
+            weatherRepository.updateAllFavourite()
         }
-
     }
 }

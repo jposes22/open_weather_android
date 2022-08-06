@@ -22,7 +22,7 @@ class CityRepository @Inject constructor(
     private val cityDao: CityDao,
     private val cityConverter: CityConverter,
     @ApplicationContext private val context: Context
-) {
+):BaseRepository() {
     fun updateCityOnDatabase() {
         cityDao.insert(cityConverter.toEntity(readJSONFromAsset()))
     }

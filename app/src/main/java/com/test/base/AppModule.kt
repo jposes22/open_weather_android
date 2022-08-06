@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
 import com.test.domain.dao.CityDao
+import com.test.domain.dao.WeatherDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,6 +32,12 @@ class AppModule {
     @Provides
     fun provideCityDao(appDatabaseBase: AppDatabaseBase): CityDao {
         return appDatabaseBase.cityDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideWeatherDao(appDatabaseBase: AppDatabaseBase): WeatherDao {
+        return appDatabaseBase.weatherDao()
     }
 
     @Provides

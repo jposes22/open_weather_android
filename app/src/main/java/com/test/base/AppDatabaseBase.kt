@@ -3,13 +3,14 @@ package com.test.base
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.test.domain.dao.CityDao
+import com.test.domain.dao.WeatherDao
 import com.test.domain.model.entity.CityEntity
-import com.test.domain.model.entity.HouseEntity
+import com.test.domain.model.entity.WeatherEntity
 
 
 @Database(
-    entities = [CityEntity::class, HouseEntity::class],
-    version = 1,
+    entities = [CityEntity::class, WeatherEntity::class],
+    version = 2,
     exportSchema = true
 )
 abstract class AppDatabaseBase : RoomDatabase() {
@@ -19,5 +20,6 @@ abstract class AppDatabaseBase : RoomDatabase() {
     }
 
     abstract fun cityDao(): CityDao
+    abstract fun weatherDao(): WeatherDao
 
 }
