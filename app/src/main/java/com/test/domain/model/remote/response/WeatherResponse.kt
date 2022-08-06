@@ -12,6 +12,9 @@ class WeatherResponse {
     @SerializedName("base")
     var stations:String? = null
 
+    @SerializedName("dt")
+    var date:Long? = null
+
     @SerializedName("main")
     var info:WeatherInfo? = null
 }

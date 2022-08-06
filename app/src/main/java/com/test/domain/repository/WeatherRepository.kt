@@ -1,9 +1,8 @@
 package com.test.domain.repository
 
-import android.content.Context
 import com.test.domain.model.remote.response.WeatherResponse
 import com.test.domain.remote.BaseRemoteApi
-import dagger.hilt.android.qualifiers.ApplicationContext
+import com.test.domain.remote.RemoteExceptions
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -11,16 +10,16 @@ import javax.inject.Singleton
 @Singleton
 class WeatherRepository @Inject constructor(
     private val baseRemoteApi: BaseRemoteApi,
-    @ApplicationContext private val context: Context
-) {
+) : BaseRepository() {
 
-    suspend fun getWeatherByCityId(cityId:Long) {
-        return try {
-            val result = baseRemoteApi.getWeatherByCityId(cityId)
-            //ResourceDto.Success(baseRemoteApi.getAlarms().content)
-            //ResourceDto.Success(getTemporalMock(page, pageSize))
+    @Throws(RemoteExceptions::class)
+    suspend fun getWeatherByCityId(cityId: Long): WeatherResponse {
+        try {
+            return baseRemoteApi.getWeatherByCityId(cityId)
         } catch (e: Exception) {
-            //handleException(e)
+            throw handleException(e)
         }
     }
+
+
 }
