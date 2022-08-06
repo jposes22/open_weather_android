@@ -42,7 +42,7 @@ class CityListFragment : Fragment() {
         _binding!!.viewModel = viewModel
         val recyclerView = binding.cityListRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = CityRecyclerViewAdapter()
+        adapter = CityRecyclerViewAdapter(context!!)
         recyclerView.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
