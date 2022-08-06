@@ -2,22 +2,24 @@ package com.test.ui.city
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.test.base.flagLoad
 import com.test.databinding.FragmentCityListItemBinding
 import com.test.domain.model.entity.CityEntity
+import com.test.domain.model.model.CityListModel
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class CityRecyclerViewAdapter(var context: Context) : ListAdapter<CityEntity, RecyclerView.ViewHolder>(DiffCallback()) {
+class CityRecyclerViewAdapter(var context: Context,var citySelected:(CityListModel)-> Unit) : ListAdapter<CityListModel, RecyclerView.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -36,13 +38,12 @@ class CityRecyclerViewAdapter(var context: Context) : ListAdapter<CityEntity, Re
 
         when(holder){
             is ViewHolderListItem -> {
-
-                holder.countryFlag.flagLoad(context, item.country)
-
-
-                holder.cityName.text = item.name
-
-
+                holder.countryFlagImageView.flagLoad(context, item.countryCode)
+                holder.cityNameTextView.text = item.name
+                holder.containerView.setOnClickListener {
+                    citySelected(item)
+                }
+                holder.imageViewIsFavourite.visibility = if (item.isFavourite) View.VISIBLE else View.GONE
             }
         }
     }
@@ -52,20 +53,22 @@ class CityRecyclerViewAdapter(var context: Context) : ListAdapter<CityEntity, Re
 
     inner class ViewHolderListItem(binding: FragmentCityListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val cityName: TextView = binding.cityName
-        val countryFlag: ImageView = binding.imageViewFlag
+        val cityNameTextView: TextView = binding.cityName
+        val countryFlagImageView: ImageView = binding.imageViewFlag
+        val containerView: View = binding.containerCity
+        val imageViewIsFavourite: ImageView = binding.imageViewIsFavourite
 
         override fun toString(): String {
             return super.toString() + " '" + "contentView.text" + "'"
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<CityEntity>() {
-        override fun areItemsTheSame(oldItem: CityEntity, newItem: CityEntity): Boolean {
+    class DiffCallback : DiffUtil.ItemCallback<CityListModel>() {
+        override fun areItemsTheSame(oldItem: CityListModel, newItem: CityListModel): Boolean {
             return oldItem.id == oldItem.id
         }
 
-        override fun areContentsTheSame(oldItem: CityEntity, newItem: CityEntity): Boolean {
+        override fun areContentsTheSame(oldItem: CityListModel, newItem: CityListModel): Boolean {
             return oldItem.toString() == newItem.toString()
         }
     }

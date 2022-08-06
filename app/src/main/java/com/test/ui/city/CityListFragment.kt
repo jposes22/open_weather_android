@@ -12,6 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import com.test.databinding.FragmentCityListBinding
+import com.test.domain.model.entity.CityEntity
 import kotlinx.coroutines.launch
 
 /**
@@ -42,7 +43,7 @@ class CityListFragment : Fragment() {
         _binding!!.viewModel = viewModel
         val recyclerView = binding.cityListRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = CityRecyclerViewAdapter(context!!)
+        adapter = CityRecyclerViewAdapter(context!!, citySelected = { viewModel.selectedCity(it) })
         recyclerView.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
