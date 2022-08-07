@@ -20,6 +20,8 @@
             android:id="@+id/cityNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:hint="@string/search"
             android:inputType="text"
             android:text="@={viewModel.cityName}"
@@ -27,17 +29,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cityListRecyclerView"
-            android:name="com.test.ui.city.CityListFragment"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layoutManager="LinearLayoutManager"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cityNameEditText"
-            tools:context=".ui.city.CityListFragment"
-            tools:listitem="@layout/fragment_city_list_item" />
+            app:layout_constraintTop_toBottomOf="@id/cityNameEditText">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cityListRecyclerView"
+                android:name="com.test.ui.city.CityListFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                app:layoutManager="LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cityNameEditText"
+                tools:context=".ui.city.CityListFragment"
+                tools:listitem="@layout/fragment_city_list_item" />
+        </androidx.cardview.widget.CardView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -10,6 +10,7 @@
 
     <TextView
         android:id="@+id/cityName"
+        style="@style/AppThemeMain.TextView.Title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -17,8 +18,8 @@
         android:foregroundGravity="center"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView_flag"
-        app:layout_constraintStart_toEndOf="@+id/imageViewIsFavourite"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewIsFavourite"
+        app:layout_constraintStart_toEndOf="@+id/imageView_flag"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Madriz">
 
@@ -26,20 +27,23 @@
 
     <ImageView
         android:id="@+id/imageView_flag"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/imageViewIsFavourite"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/cityName"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cityName"
         app:srcCompat="@drawable/ic_favourite_star" />
 </androidx.constraintlayout.widget.ConstraintLayout>

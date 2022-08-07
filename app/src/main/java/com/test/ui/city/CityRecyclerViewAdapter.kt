@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.test.base.flagLoad
 import com.test.databinding.FragmentCityListItemBinding
-import com.test.domain.model.entity.CityEntity
 import com.test.domain.model.model.CityListModel
 
 /**

@@ -1,6 +1,5 @@
 package com.test.ui.city
 
-import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.test.domain.converter.CityConverter
@@ -9,8 +8,10 @@ import com.test.domain.model.model.CityListModel
 import com.test.domain.preferences.SharedPreferencesManager
 import com.test.domain.repository.CityRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
