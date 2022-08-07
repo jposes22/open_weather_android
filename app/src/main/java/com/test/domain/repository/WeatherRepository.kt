@@ -6,6 +6,9 @@ import com.test.domain.model.entity.WeatherEntity
 import com.test.domain.preferences.SharedPreferencesManager
 import com.test.domain.remote.BaseRemoteApi
 import com.test.domain.remote.RemoteExceptions
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -31,13 +34,19 @@ class WeatherRepository @Inject constructor(
 
 
     suspend fun updateAllFavourite() {
-        sharedPreferencesManager.getFavouriteCityIds().forEach { cityId:Long ->
-            try {
-                getWeatherByCityIdAndSave(cityId)
-            }catch (e: Exception){
+        //make coroutinescope and async to increase performance, and execute all in parallel
+        coroutineScope {
+            sharedPreferencesManager.getFavouriteCityIds().forEach { cityId:Long ->
+                try {
+                    async{
+                        getWeatherByCityIdAndSave(cityId)
+                    }
+                }catch (e: Exception){
 
+                }
             }
         }
+
 
     }
 
