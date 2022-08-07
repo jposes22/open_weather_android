@@ -14,11 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.test.R
 import com.test.databinding.FragmentFavCitiesBinding
 import com.test.ui.city.CityListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+@AndroidEntryPoint
 class FavCitiesListFragment : Fragment() {
 
     private var _binding: FragmentFavCitiesBinding? = null

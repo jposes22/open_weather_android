@@ -2,36 +2,40 @@ package com.test.ui.main
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.test.base.flagLoad
-import com.test.databinding.FragmentCityListItemBinding
+import com.test.databinding.FragmentFavCitiesItemBinding
 import com.test.domain.model.model.CityListModel
-import com.test.ui.city.CityRecyclerViewAdapter
 
 class FavCitiesRecyclerViewAdapter(var context: Context, var citySelected:(CityListModel)-> Unit) : ListAdapter<CityListModel, RecyclerView.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ViewHolderListItem(FragmentCityListItemBinding.inflate(
+        return ViewHolderListItem(FragmentFavCitiesItemBinding.inflate(
             LayoutInflater.from(parent.context),parent,false))
     }
 //WHEN ITEM IS CLICKED DOES SHIT
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
     val item = getItem(position)
     when(holder){
-        is CityRecyclerViewAdapter.ViewHolderListItem -> {
-            holder.countryFlagImageView.flagLoad(context, item.countryCode)
+        is FavCitiesRecyclerViewAdapter.ViewHolderListItem -> {
             holder.cityNameTextView.text = item.name
-            holder.containerView.setOnClickListener {
-                citySelected(item)
-            }
-            holder.imageViewIsFavourite.visibility = if (item.isFavourite) View.VISIBLE else View.GONE
+            holder.temperatureTextView.text = "20º"
         }
     }
 
+    }
+
+    inner class ViewHolderListItem(binding: FragmentFavCitiesItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        val cityNameTextView: TextView = binding.textViewCityName
+        val temperatureTextView: TextView = binding.textViewTemperature
+
+        override fun toString(): String {
+            return super.toString() + " '" + "contentView.text" + "'"
+        }
     }
 
 

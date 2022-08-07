@@ -27,8 +27,8 @@ class FavCitiesViewModel @Inject constructor(
 //I DONT GET WHY I NEED _FAVOURITEIDS BUT THE CODE DOOESNT WORK WITHOUT IT BUT REFERENCES DONT WORK NEITHER
     private val _cityName = MutableStateFlow("")
     var cityName:MutableStateFlow<String> = _cityName
-    private val _favouriteIds = MutableStateFlow(settingsSharedPreferencesManager.getFavouriteCityIds())
-    var favouriteIds:MutableStateFlow<List<Long>> = _favouriteIds
+    private val _favouriteId = MutableStateFlow(settingsSharedPreferencesManager.getFavouriteCityIds())
+    var favouriteIds:MutableStateFlow<List<Long>> = _favouriteId
 
 //ACTIVATES WHEN A LIST COMPONENT CHANGES
     private val _cityList: Flow<List<CityEntity>?> =
