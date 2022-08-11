@@ -9,7 +9,7 @@ import java.util.*
 @Entity
 class WeatherEntity {
     @PrimaryKey
-    var id : Long? = null
+    var cityId : Long? = null
     var name : String? = null
     @TypeConverters(DateConverter::class)
     var date: Date? = null

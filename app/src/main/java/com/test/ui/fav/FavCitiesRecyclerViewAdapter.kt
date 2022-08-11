@@ -1,4 +1,4 @@
-package com.test.ui.main
+package com.test.ui.fav
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.test.databinding.FragmentFavCitiesItemBinding
-import com.test.domain.model.model.CityListModel
+import com.test.domain.model.model.FavCityModel
 
-class FavCitiesRecyclerViewAdapter(var context: Context, var citySelected:(CityListModel)-> Unit) : ListAdapter<CityListModel, RecyclerView.ViewHolder>(DiffCallback()) {
+class FavCitiesRecyclerViewAdapter(var context: Context, var citySelected:(FavCityModel)-> Unit) : ListAdapter<FavCityModel, RecyclerView.ViewHolder>(
+    DiffCallback()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolderListItem(FragmentFavCitiesItemBinding.inflate(
@@ -20,9 +22,9 @@ class FavCitiesRecyclerViewAdapter(var context: Context, var citySelected:(CityL
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
     val item = getItem(position)
     when(holder){
-        is FavCitiesRecyclerViewAdapter.ViewHolderListItem -> {
+        is ViewHolderListItem -> {
             holder.cityNameTextView.text = item.name
-            holder.temperatureTextView.text = "20º"
+            holder.temperatureTextView.text = item.temperature.toString()
         }
     }
 
@@ -41,12 +43,12 @@ class FavCitiesRecyclerViewAdapter(var context: Context, var citySelected:(CityL
 
 
 //ARE THIS BASIC RECYCLER METHODS?
-class DiffCallback : DiffUtil.ItemCallback<CityListModel>() {
-    override fun areItemsTheSame(oldItem: CityListModel, newItem: CityListModel): Boolean {
+class DiffCallback : DiffUtil.ItemCallback<FavCityModel>() {
+    override fun areItemsTheSame(oldItem: FavCityModel, newItem: FavCityModel): Boolean {
         return oldItem.id == oldItem.id
     }
 
-    override fun areContentsTheSame(oldItem: CityListModel, newItem: CityListModel): Boolean {
+    override fun areContentsTheSame(oldItem: FavCityModel, newItem: FavCityModel): Boolean {
         return oldItem.toString() == newItem.toString()
     }
 }

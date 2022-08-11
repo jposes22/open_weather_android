@@ -8,14 +8,14 @@
 
         <variable
             name="viewModel"
-            type="com.test.ui.main.FavCitiesViewModel" />
+            type="com.test.ui.fav.FavCitiesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        tools:context=".ui.main.FavCitiesListFragment">
+        tools:context=".ui.fav.FavCitiesListFragment">
     <Button
         android:id="@+id/button_first"
         android:layout_width="wrap_content"

@@ -31,6 +31,10 @@ class CityRepository @Inject constructor(
         return cityDao.findAllByName(name)
     }
 
+    fun findAllIds(ids:List<Long>):Flow<List<CityEntity>>{
+        return cityDao.findAllByIds(ids)
+    }
+
     fun findAllById(id:Long): Flow<CityEntity>{
         return cityDao.findById(id)
     }

@@ -17,4 +17,7 @@ interface CityDao : BaseDao<CityEntity> {
     @Query("select * from cityentity where id = :id")
     fun findById(id: Long): Flow<CityEntity>
 
+    @Query("select * from cityentity where id in (:ids)")
+    fun findAllByIds(ids: List<Long>): Flow<List<CityEntity>>
+
 }

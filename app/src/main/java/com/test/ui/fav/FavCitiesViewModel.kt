@@ -1,10 +1,11 @@
-package com.test.ui.main
+package com.test.ui.fav
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.test.domain.converter.CityConverter
 import com.test.domain.model.entity.CityEntity
 import com.test.domain.model.model.CityListModel
+import com.test.domain.model.model.FavCityModel
 import com.test.domain.preferences.SharedPreferencesManager
 import com.test.domain.repository.CityRepository
 import com.test.domain.repository.WeatherRepository
@@ -25,29 +26,23 @@ class FavCitiesViewModel @Inject constructor(
     private val cityConverter: CityConverter
 ): ViewModel(){
 //I DONT GET WHY I NEED _FAVOURITEIDS BUT THE CODE DOOESNT WORK WITHOUT IT BUT REFERENCES DONT WORK NEITHER
-    private val _cityName = MutableStateFlow("")
-    var cityName:MutableStateFlow<String> = _cityName
+
     private val _favouriteId = MutableStateFlow(settingsSharedPreferencesManager.getFavouriteCityIds())
     var favouriteIds:MutableStateFlow<List<Long>> = _favouriteId
 
 //ACTIVATES WHEN A LIST COMPONENT CHANGES
-    private val _cityList: Flow<List<CityEntity>?> =
-        cityName.transformLatest { cityNameSearch ->
-            return@transformLatest cityRepository.findAllByName(cityNameSearch).collect{
-                emit(it)
+    val cityList: Flow<List<FavCityModel>?> =
+    favouriteIds.transformLatest { cityIds ->
+            return@transformLatest cityRepository.findAllIds(cityIds).collect{ citiEntities ->
+                emit(cityConverter.toModel(citiEntities))
             }
         }
-//REFRESH THE VIEW WHEN THE LISTED ITEM CHANGES
-    val cityList:Flow<List<CityListModel>> =
-        _cityList.combine(favouriteIds){ cities, ids ->
-            return@combine cities?.let { cityConverter.toModel(it,ids) } ?: emptyList()
-        }
 
-    private val _favouriteIds = MutableStateFlow(settingsSharedPreferencesManager.getFavouriteCityIds())
+
 
 
     //  WHEN CLICKED..... SHOULD EXPAND MORE DATA TO SHOW ABOUT SELECTED CITY
-    fun selectedCity(citySelected: CityListModel) {
+    fun selectedCity(citySelected: FavCityModel) {
 
     }
 }

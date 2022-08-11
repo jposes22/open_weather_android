@@ -3,6 +3,7 @@ package com.test.domain.converter
 import com.test.domain.model.dto.CityDto
 import com.test.domain.model.entity.CityEntity
 import com.test.domain.model.model.CityListModel
+import com.test.domain.model.model.FavCityModel
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -38,5 +39,20 @@ class CityConverter @Inject constructor(){
         cityListModel.longitude = citiesEntity.longitude
         cityListModel.isFavourite = isFavourite
         return cityListModel
+    }
+
+    fun toModel(citiEntities: List<CityEntity>): List<FavCityModel> {
+        return citiEntities.map { toModel(it) }
+    }
+
+    fun toModel(citiesEntity: CityEntity):FavCityModel{
+        val favCityModel = FavCityModel()
+        favCityModel.id = citiesEntity.id
+        favCityModel.name = citiesEntity.name
+        favCityModel.latitude = citiesEntity.latitude
+        favCityModel.longitude = citiesEntity.longitude
+        favCityModel.temperature = 20.0f
+        favCityModel.icon = 1
+        return favCityModel
     }
 }

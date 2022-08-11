@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 class WeatherResponse {
     @SerializedName("id")
-    var id:Long? = null
+    var cityId:Long? = null
 
     @SerializedName("name")
     var name:String? = null

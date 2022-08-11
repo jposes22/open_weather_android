@@ -1,4 +1,4 @@
-package com.test.ui.main
+package com.test.ui.fav
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,7 +13,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.test.R
 import com.test.databinding.FragmentFavCitiesBinding
-import com.test.ui.city.CityListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

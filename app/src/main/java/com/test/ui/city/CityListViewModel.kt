@@ -46,7 +46,9 @@ class CityListViewModel @Inject constructor(
         if(settingsSharedPreferencesManager.getFavouriteCityIds().contains(citySelected.id)){
             finalListIds.remove(citySelected.id)
         }else{
-            citySelected.id?.let { finalListIds.add(it) }
+            if(citySelected.id != null){
+                finalListIds.add(citySelected.id!!)
+            }
         }
         settingsSharedPreferencesManager.setFavouriteCityIds(finalListIds)
         viewModelScope.launch { favouriteIds.emit(finalListIds) }
