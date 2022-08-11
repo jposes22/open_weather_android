@@ -6,8 +6,13 @@
     app:startDestination="@id/FavCitiesListFragment">
 
     <fragment
+<<<<<<< Updated upstream
         android:id="@+id/FavCitiesListFragment"
         android:name="com.test.ui.fav.FavCitiesListFragment"
+=======
+        android:id="@+id/FirstFragment"
+        android:name="com.test.ui.favCitiesList.FavCitiesListFragment"
+>>>>>>> Stashed changes
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_fav_cities">
 

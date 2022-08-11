@@ -8,14 +8,22 @@
 
         <variable
             name="viewModel"
+<<<<<<< Updated upstream
             type="com.test.ui.fav.FavCitiesViewModel" />
+=======
+            type="com.test.ui.favCitiesList.FavCitiesViewModel" />
+>>>>>>> Stashed changes
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+<<<<<<< Updated upstream
         tools:context=".ui.fav.FavCitiesListFragment">
+=======
+        tools:context=".ui.favCitiesList.FavCitiesListFragment">
+>>>>>>> Stashed changes
     <Button
         android:id="@+id/button_first"
         android:layout_width="wrap_content"
