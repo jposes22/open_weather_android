@@ -6,5 +6,9 @@ class FavCityModel {
     var latitude:Float? = null
     var longitude:Float? = null
     var temperature:Float? = null
-    var icon:Int? = null
+    var pressure: Int? = null
+    var humidity: Int? = null
+    var maxTemperature:Float? = null
+    var minTemperature:Float? = null
+    var iconCode:String? = null
 }

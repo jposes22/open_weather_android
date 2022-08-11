@@ -3,11 +3,13 @@ package com.test.ui.fav
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.test.base.iconWeatherLoad
 import com.test.databinding.FragmentFavCitiesItemBinding
 import com.test.domain.model.model.FavCityModel
 
@@ -25,7 +27,8 @@ class FavCitiesRecyclerViewAdapter(var context: Context, var citySelected:(FavCi
         when(holder){
             is ViewHolderListItem -> {
                 holder.cityNameTextView.text = item.name
-                holder.temperatureTextView.text = item.temperature.toString()
+                holder.temperatureTextView.text = "${item.temperature.toString()}º"
+                holder.weatherIconImageView.iconWeatherLoad(context,item.iconCode)
                 holder.container.setOnClickListener {
                     citySelected(item)
                 }
@@ -38,6 +41,7 @@ class FavCitiesRecyclerViewAdapter(var context: Context, var citySelected:(FavCi
         RecyclerView.ViewHolder(binding.root) {
         val cityNameTextView: TextView = binding.textViewCityName
         val temperatureTextView: TextView = binding.textViewTemperature
+        val weatherIconImageView: ImageView = binding.imageViewWeatherIcon
         val container:ConstraintLayout = binding.favCityContainer
 
         override fun toString(): String {

@@ -55,7 +55,10 @@ class CityConverter @Inject constructor(){
         favCityModel.latitude = citiesEntity.latitude
         favCityModel.longitude = citiesEntity.longitude
         favCityModel.temperature = weatherEntity?.temperature
-        favCityModel.icon = 1
+        favCityModel.humidity = weatherEntity?.humidity
+        favCityModel.maxTemperature = weatherEntity?.maxTemperature
+        favCityModel.minTemperature = weatherEntity?.minTemperature
+        favCityModel.iconCode = weatherEntity?.iconCode
         return favCityModel
     }
 }

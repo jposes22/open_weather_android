@@ -14,3 +14,12 @@ fun ImageView.flagLoad(context: Context,countryCode: String?){
         .circleCrop()
         .into(this)
 }
+
+fun ImageView.iconWeatherLoad(context: Context,code: String?){
+    Glide.with(context)
+        .load("https://openweathermap.org/img/wn/${code}@2x.png")
+        .placeholder(R.drawable.ic_image_placeholder)
+        .error(R.drawable.ic_image_error)
+        .circleCrop()
+        .into(this)
+}

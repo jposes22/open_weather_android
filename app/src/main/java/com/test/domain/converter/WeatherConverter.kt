@@ -24,6 +24,7 @@ class WeatherConverter @Inject constructor(){
         weatherEntity.humidity = weatherResponse.info?.humidity
         weatherEntity.maxTemperature = weatherResponse.info?.maxTemperature
         weatherEntity.minTemperature = weatherResponse.info?.minTemperature
+        weatherEntity.iconCode = weatherResponse.weather?.firstOrNull()?.icon
         return weatherEntity
     }
 

@@ -18,4 +18,5 @@ class WeatherEntity {
     var humidity: Int? = null
     var maxTemperature:Float? = null
     var minTemperature:Float? = null
+    var iconCode:String? = null
 }

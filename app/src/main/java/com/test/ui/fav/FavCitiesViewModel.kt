@@ -18,11 +18,8 @@ THIS CLASS MUST CALL DATA FROM CITIES BD AND MAKE RECYCLERVIEW CAPABLE OF OBTAIN
 class FavCitiesViewModel @Inject constructor(
     private val cityRepository: CityRepository,
     private val weatherRepository: WeatherRepository,
-    private val settingsSharedPreferencesManager: SharedPreferencesManager,
     private val cityConverter: CityConverter
 ): ViewModel(){
-//I DONT GET WHY I NEED _FAVOURITEIDS BUT THE CODE DOOESNT WORK WITHOUT IT BUT REFERENCES DONT WORK NEITHER
-
 
     //ACTIVATES WHEN A LIST COMPONENT CHANGES
     val cityList: Flow<List<FavCityModel>> =
@@ -30,9 +27,4 @@ class FavCitiesViewModel @Inject constructor(
                return@combine cityConverter.toFavModel(cityEntities,weatherEntities)
             }
 
-
-    //  WHEN CLICKED..... SHOULD EXPAND MORE DATA TO SHOW ABOUT SELECTED CITY
-    fun selectedCity(citySelected: FavCityModel) {
-
-    }
 }
