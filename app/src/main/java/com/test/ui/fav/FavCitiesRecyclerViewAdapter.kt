@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,9 @@ class FavCitiesRecyclerViewAdapter(var context: Context, var citySelected:(FavCi
             is ViewHolderListItem -> {
                 holder.cityNameTextView.text = item.name
                 holder.temperatureTextView.text = item.temperature.toString()
+                holder.container.setOnClickListener {
+                    citySelected(item)
+                }
             }
         }
 
@@ -34,6 +38,7 @@ class FavCitiesRecyclerViewAdapter(var context: Context, var citySelected:(FavCi
         RecyclerView.ViewHolder(binding.root) {
         val cityNameTextView: TextView = binding.textViewCityName
         val temperatureTextView: TextView = binding.textViewTemperature
+        val container:ConstraintLayout = binding.favCityContainer
 
         override fun toString(): String {
             return super.toString() + " '" + "contentView.text" + "'"

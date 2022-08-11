@@ -1,10 +1,11 @@
 package com.test.ui.fav
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -23,10 +24,10 @@ import kotlinx.coroutines.launch
 class FavCitiesListFragment : Fragment() {
 
     private var _binding: FragmentFavCitiesBinding? = null
-//    VIEWMODEL MUST CHANGE TO FavCitiesViewModel
+    //    VIEWMODEL MUST CHANGE TO FavCitiesViewModel
     private val viewModel: FavCitiesViewModel by viewModels()
     private lateinit var adapter: FavCitiesRecyclerViewAdapter
-//     This property is only valid between onCreateView and
+    //     This property is only valid between onCreateView and
 //     onDestroyView.
     private val binding get() = _binding!!
 
@@ -50,7 +51,13 @@ class FavCitiesListFragment : Fragment() {
 
 
 //        MAGIC THAT WORKS AND NO-ONE KNOWS WHY
-        adapter = FavCitiesRecyclerViewAdapter(context!!, citySelected = {viewModel.selectedCity(it)})
+        adapter = FavCitiesRecyclerViewAdapter(context!!,
+            citySelected = {
+                val bundle = bundleOf("cityId" to it.id)
+                findNavController().navigate(R.id.action_FavCitiesListFragment_to_CityDetailFragment, bundle)
+                //viewModel.selectedCity(it)}
+            }
+        )
         recyclerView.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -64,7 +71,7 @@ class FavCitiesListFragment : Fragment() {
         return binding.root
 
     }
-//NAVIGATION FUN MAKES WORK RES.NAVIGATION.NAV_GRAPH
+    //NAVIGATION FUN MAKES WORK RES.NAVIGATION.NAV_GRAPH
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
