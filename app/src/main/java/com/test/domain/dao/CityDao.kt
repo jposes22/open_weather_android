@@ -20,4 +20,12 @@ interface CityDao : BaseDao<CityEntity> {
     @Query("select * from cityentity where id in (:ids)")
     fun findAllByIds(ids: List<Long>): Flow<List<CityEntity>>
 
+    @Query("select * from cityentity where isFavourite = :isFavourite")
+    fun findAllFavourite(isFavourite: Boolean = true):Flow<List<CityEntity>>
+
+    @Query("UPDATE cityentity SET isFavourite = :isFavourite WHERE id = :id")
+    fun updateIsFavourite(id:Long,isFavourite:Boolean)
+
+
+
 }

@@ -18,15 +18,15 @@ class FavCitiesRecyclerViewAdapter(var context: Context, var citySelected:(FavCi
         return ViewHolderListItem(FragmentFavCitiesItemBinding.inflate(
             LayoutInflater.from(parent.context),parent,false))
     }
-//WHEN ITEM IS CLICKED DOES SHIT
+    //WHEN ITEM IS CLICKED DOES SHIT
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-    val item = getItem(position)
-    when(holder){
-        is ViewHolderListItem -> {
-            holder.cityNameTextView.text = item.name
-            holder.temperatureTextView.text = item.temperature.toString()
+        val item = getItem(position)
+        when(holder){
+            is ViewHolderListItem -> {
+                holder.cityNameTextView.text = item.name
+                holder.temperatureTextView.text = item.temperature.toString()
+            }
         }
-    }
 
     }
 
@@ -42,15 +42,15 @@ class FavCitiesRecyclerViewAdapter(var context: Context, var citySelected:(FavCi
 
 
 
-//ARE THIS BASIC RECYCLER METHODS?
-class DiffCallback : DiffUtil.ItemCallback<FavCityModel>() {
-    override fun areItemsTheSame(oldItem: FavCityModel, newItem: FavCityModel): Boolean {
-        return oldItem.id == oldItem.id
-    }
+    //ARE THIS BASIC RECYCLER METHODS?
+    class DiffCallback : DiffUtil.ItemCallback<FavCityModel>() {
+        override fun areItemsTheSame(oldItem: FavCityModel, newItem: FavCityModel): Boolean {
+            return oldItem.id == oldItem.id
+        }
 
-    override fun areContentsTheSame(oldItem: FavCityModel, newItem: FavCityModel): Boolean {
-        return oldItem.toString() == newItem.toString()
+        override fun areContentsTheSame(oldItem: FavCityModel, newItem: FavCityModel): Boolean {
+            return oldItem.toString() == newItem.toString()
+        }
     }
-}
 
 }

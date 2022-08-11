@@ -2,11 +2,10 @@ package com.test.domain.model.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-class WeatherResponse {
+class WeatherResponse() {
     @SerializedName("id")
     var cityId:Long? = null
 
-    @SerializedName("name")
     var name:String? = null
 
     @SerializedName("cod")
@@ -39,9 +38,9 @@ class WeatherWeatherResponse{
     @SerializedName("id")
     var id:Int? = null
     @SerializedName("main")
-    var main:Float? = null
+    var main:String? = null
     @SerializedName("icon")
-    var icon:Float? = null
+    var icon:String? = null
 }
 
 class WeatherInfo{

@@ -35,8 +35,16 @@ class CityRepository @Inject constructor(
         return cityDao.findAllByIds(ids)
     }
 
+    fun updateAsFavourite(id: Long, isFavourite: Boolean){
+        cityDao.updateIsFavourite(id,isFavourite)
+    }
+
     fun findAllById(id:Long): Flow<CityEntity>{
         return cityDao.findById(id)
+    }
+
+    fun findAllFavourite(): Flow<List<CityEntity>>{
+        return cityDao.findAllFavourite()
     }
 
     private fun readJSONFromAsset(): List<CityDto> {

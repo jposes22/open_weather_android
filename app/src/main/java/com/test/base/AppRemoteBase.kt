@@ -1,10 +1,9 @@
 package com.test.base
 
 
-import com.test.domain.remote.BaseRemoteApi
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.test.BuildConfig
+import com.test.domain.remote.BaseRemoteApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,6 +12,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -27,30 +27,20 @@ class AppRemoteBase {
 
     @Singleton
     @Provides
-    fun provideGsonBuilder(): Gson {
-        return GsonBuilder()
-            .excludeFieldsWithoutExposeAnnotation()
-            .create()
-    }
-
-    @Singleton
-    @Provides
-    fun provideRetrofit(gson: Gson): Retrofit.Builder {
-        return Retrofit.Builder()
+    fun provideService(): BaseRemoteApi {
+        val retrofitBuilder = Retrofit.Builder()
             .baseUrl(BaseUrl)
-            .addConverterFactory(GsonConverterFactory.create(gson))
+            .callbackExecutor(Executors.newSingleThreadExecutor())
+            .addConverterFactory(
+                GsonConverterFactory.create()
+            )
             .client(createOkHttpClient())
-    }
-
-    @Singleton
-    @Provides
-    fun provideBlogService(retrofit: Retrofit.Builder): BaseRemoteApi {
-        return retrofit
+        return retrofitBuilder
             .build()
             .create(BaseRemoteApi::class.java)
     }
 
-    fun createOkHttpClient(): OkHttpClient {
+    private fun createOkHttpClient(): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         if (BuildConfig.DEBUG) {
             httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY

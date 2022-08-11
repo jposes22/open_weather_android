@@ -13,5 +13,6 @@ class CityEntity {
     var country:String? = null
     var latitude:Float? = null
     var longitude:Float? = null
+    var isFavourite:Boolean? = null
 
 }
