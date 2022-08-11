@@ -8,6 +8,7 @@ import com.test.domain.model.model.CityListModel
 import com.test.domain.preferences.SharedPreferencesManager
 import com.test.domain.repository.CityRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -25,30 +26,19 @@ class CityListViewModel @Inject constructor(
 
     private val _cityName = MutableStateFlow("")
     var cityName:MutableStateFlow<String> = _cityName
-    private val _favouriteIds = MutableStateFlow(settingsSharedPreferencesManager.getFavouriteCityIds())
-    var favouriteIds:MutableStateFlow<List<Long>> = _favouriteIds
 
-    private val _cityList: Flow<List<CityEntity>?> =
+    val cityList: Flow<List<CityListModel>?> =
         cityName.transformLatest { cityNameSearch ->
                 return@transformLatest cityRepository.findAllByName(cityNameSearch).collect{
-                    emit(it)
+                    emit(cityConverter.toCityModel(it))
             }
         }
 
-    val cityList:Flow<List<CityListModel>> =
-        _cityList.combine(favouriteIds){ cities, ids ->
-            return@combine cities?.let { cityConverter.toModel(it,ids) } ?: emptyList()
-        }
 
     //add city id to SharedPreferences when is selected is not fav and remove in other case
     fun selectedCity(citySelected: CityListModel) {
-        val finalListIds:MutableList<Long> = settingsSharedPreferencesManager.getFavouriteCityIds().toMutableList()
-        if(settingsSharedPreferencesManager.getFavouriteCityIds().contains(citySelected.id)){
-            finalListIds.remove(citySelected.id)
-        }else{
-            citySelected.id?.let { finalListIds.add(it) }
+        viewModelScope.launch(Dispatchers.IO){
+            citySelected.id?.let { cityRepository.updateAsFavourite(it,!citySelected.isFavourite) }
         }
-        settingsSharedPreferencesManager.setFavouriteCityIds(finalListIds)
-        viewModelScope.launch { favouriteIds.emit(finalListIds) }
     }
 }

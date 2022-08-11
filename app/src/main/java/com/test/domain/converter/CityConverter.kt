@@ -2,7 +2,9 @@ package com.test.domain.converter
 
 import com.test.domain.model.dto.CityDto
 import com.test.domain.model.entity.CityEntity
+import com.test.domain.model.entity.WeatherEntity
 import com.test.domain.model.model.CityListModel
+import com.test.domain.model.model.FavCityModel
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -24,11 +26,11 @@ class CityConverter @Inject constructor(){
         return citieEntity
     }
 
-    fun toModel(citiesEntity:List<CityEntity>,favouriteIds:List<Long>):List<CityListModel>{
-        return citiesEntity.map { toModel(it,favouriteIds.contains(it.id)) }
+    fun toCityModel(citiesEntity:List<CityEntity>):List<CityListModel>{
+        return citiesEntity.map { toCityModel(it) }
     }
 
-    fun toModel(citiesEntity: CityEntity,isFavourite:Boolean):CityListModel{
+    fun toCityModel(citiesEntity: CityEntity):CityListModel{
         val cityListModel = CityListModel()
         cityListModel.id = citiesEntity.id
         cityListModel.name = citiesEntity.name
@@ -36,7 +38,24 @@ class CityConverter @Inject constructor(){
         cityListModel.stateCode = citiesEntity.state
         cityListModel.latitude = citiesEntity.latitude
         cityListModel.longitude = citiesEntity.longitude
-        cityListModel.isFavourite = isFavourite
+        cityListModel.isFavourite = citiesEntity.isFavourite ?: false
         return cityListModel
+    }
+
+    fun toFavModel(citiEntities: List<CityEntity>, weatherEntities:List<WeatherEntity>): List<FavCityModel> {
+        return citiEntities.map { cityEntity ->
+            toFavModel(cityEntity,weatherEntities.firstOrNull { it.cityId == cityEntity.id })
+        }
+    }
+
+    fun toFavModel(citiesEntity: CityEntity,weatherEntity: WeatherEntity?):FavCityModel{
+        val favCityModel = FavCityModel()
+        favCityModel.id = citiesEntity.id
+        favCityModel.name = citiesEntity.name
+        favCityModel.latitude = citiesEntity.latitude
+        favCityModel.longitude = citiesEntity.longitude
+        favCityModel.temperature = weatherEntity?.temperature
+        favCityModel.icon = 1
+        return favCityModel
     }
 }

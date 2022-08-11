@@ -16,7 +16,7 @@ class WeatherConverter @Inject constructor(){
 
     fun toEntity(weatherResponse: WeatherResponse): WeatherEntity {
         val weatherEntity = WeatherEntity()
-        weatherEntity.id = weatherResponse.id
+        weatherEntity.cityId = weatherResponse.cityId
         weatherEntity.name = weatherResponse.name
         weatherEntity.date = weatherResponse.date?.let { Date(it*1000) }
         weatherEntity.temperature = weatherResponse.info?.temperature
