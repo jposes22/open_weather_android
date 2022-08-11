@@ -36,7 +36,9 @@ class SecondFragment : Fragment() {
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
-        binding.textviewSecond.text =  arguments?.getLong("cityId")?.toString() ?: "Second Fragment"
+        //binding.textviewSecond.text =  arguments?.getLong("cityId")?.toString() ?: "Second Fragment"
+        //Hay un cambio de conflicto
+        binding.textviewSecond.text = "";
     }
 
     override fun onDestroyView() {
