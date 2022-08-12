@@ -12,11 +12,7 @@
         tools:layout="@layout/fragment_fav_cities">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-
-        <action
-            android:id="@+id/action_FirstFragment_to_CityListFragment"
+            android:id="@+id/action_FavCitiesListFragment_to_CityListFragment"
             app:destination="@id/CityListFragment" />
         <action
             android:id="@+id/action_FavCitiesListFragment_to_CityDetailFragment"
@@ -27,18 +23,7 @@
         android:id="@+id/CityDetailFragment"
         android:name="com.test.ui.SecondFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FavCitiesListFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.test.ui.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_city_in_detail">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
