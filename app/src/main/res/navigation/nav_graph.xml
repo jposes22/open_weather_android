@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/CityDetailFragment"
-        android:name="com.test.ui.SecondFragment"
+        android:name="com.test.ui.fav.FavCitiesListFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_city_in_detail">
 

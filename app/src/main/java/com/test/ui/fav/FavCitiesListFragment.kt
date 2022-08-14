@@ -39,16 +39,12 @@ class FavCitiesListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//         INFLATES BINDING?
         _binding = FragmentFavCitiesBinding.inflate(inflater, container, false)
-//        BINDS VIEWMODEL AND SOME SHIT NAMED LIFECYCLE
         _binding!!.viewModel = viewModel
         _binding!!.lifecycleOwner = viewLifecycleOwner
-
         val recyclerView = binding.recyclerViewFavCitiesList
-//        GIVES RECYCLER VIEW LINEAR LAYOUT PROPERTIES¿?¿?¿?
+        //        GIVES RECYCLER VIEW LINEAR LAYOUT PROPERTIES¿?¿?¿?
         recyclerView.layoutManager = LinearLayoutManager(context)
-//        recyclerView.adapter = adapter
 
 //        OPEN CityDetailFragment on city click
         adapter = FavCitiesRecyclerViewAdapter(context!!, citySelected = {
@@ -57,6 +53,8 @@ class FavCitiesListFragment : Fragment() {
 //                viewModel.citySelected(it)
             }
         )
+
+        recyclerView.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
