@@ -44,7 +44,9 @@ class CityListFragment : Fragment() {
         val recyclerView = binding.cityListRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
         adapter = CityRecyclerViewAdapter(context!!, citySelected = { viewModel.selectedCity(it) })
+
         recyclerView.adapter = adapter
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.cityList.collect {

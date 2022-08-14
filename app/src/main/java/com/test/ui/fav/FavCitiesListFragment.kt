@@ -46,20 +46,17 @@ class FavCitiesListFragment : Fragment() {
         _binding!!.lifecycleOwner = viewLifecycleOwner
 
         val recyclerView = binding.recyclerViewFavCitiesList
-//        GIVES RECYCLER VIEW LINEAR LAYOUT PROPIERTIES¿?¿?¿?
+//        GIVES RECYCLER VIEW LINEAR LAYOUT PROPERTIES¿?¿?¿?
         recyclerView.layoutManager = LinearLayoutManager(context)
-
+//        recyclerView.adapter = adapter
 
 //        OPEN CityDetailFragment on city click
-        adapter = FavCitiesRecyclerViewAdapter(context!!,
-            citySelected = {
+        adapter = FavCitiesRecyclerViewAdapter(context!!, citySelected = {
                 val bundle = bundleOf("cityId" to it.id)
                 findNavController().navigate(R.id.action_FavCitiesListFragment_to_CityDetailFragment, bundle)
 //                viewModel.citySelected(it)
             }
-
         )
-        recyclerView.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
