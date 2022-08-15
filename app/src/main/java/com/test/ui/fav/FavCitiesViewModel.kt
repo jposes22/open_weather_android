@@ -32,6 +32,10 @@ class FavCitiesViewModel @Inject constructor(
             }
 
 //    Opens City details
-//    fun selected city
+    fun selectedCity(citySelected: FavCityModel){
+        viewModelScope.launch (Dispatchers.IO){
+
+        }
+    }
 
 }

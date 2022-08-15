@@ -30,6 +30,7 @@ class FavCitiesRecyclerViewAdapter(var context: Context, var citySelected:(FavCi
                 holder.temperatureTextView.text = "${item.temperature.toString()}º"
                 holder.weatherIconImageView.iconWeatherLoad(context,item.iconCode)
                 holder.container.setOnClickListener {
+
                     citySelected(item)
                 }
             }

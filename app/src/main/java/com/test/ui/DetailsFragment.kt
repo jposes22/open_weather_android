@@ -33,9 +33,6 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_CityDetailFragment_to_FavCitiesListGragment)
-        }
     }
 
     override fun onDestroyView() {

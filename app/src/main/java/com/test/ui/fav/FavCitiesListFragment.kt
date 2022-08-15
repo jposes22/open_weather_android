@@ -24,7 +24,6 @@ import kotlinx.coroutines.launch
 class FavCitiesListFragment : Fragment() {
 
     private var _binding: FragmentFavCitiesBinding? = null
-    //    VIEWMODEL MUST CHANGE TO FavCitiesViewModel
     private val viewModel: FavCitiesViewModel by viewModels()
     private lateinit var adapter: FavCitiesRecyclerViewAdapter
     //     This property is only valid between onCreateView and
@@ -45,6 +44,7 @@ class FavCitiesListFragment : Fragment() {
         val recyclerView = binding.recyclerViewFavCitiesList
         //        GIVES RECYCLER VIEW LINEAR LAYOUT PROPERTIES¿?¿?¿?
         recyclerView.layoutManager = LinearLayoutManager(context)
+        adapter = FavCitiesRecyclerViewAdapter(context!!, citySelected = {viewModel.selectedCity(it)})
 
 //        OPEN CityDetailFragment on city click
         adapter = FavCitiesRecyclerViewAdapter(context!!, citySelected = {
@@ -73,10 +73,6 @@ class FavCitiesListFragment : Fragment() {
 
         binding.fab.setOnClickListener{
             findNavController().navigate(R.id.action_FavCitiesListFragment_to_CityDetailFragment)
-        }
-
-        binding.fab.setOnClickListener {
-            findNavController().navigate(R.id.action_FavCitiesListFragment_to_CityListFragment)
         }
     }
 

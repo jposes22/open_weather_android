@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FavCitiesListFragment"
         android:name="com.test.ui.fav.FavCitiesListFragment"
-        android:label="@string/first_fragment_label"
+        android:label="FavCitiesListFragment"
         tools:layout="@layout/fragment_fav_cities">
 
         <action
@@ -21,19 +21,15 @@
 
     <fragment
         android:id="@+id/CityDetailFragment"
-        android:name="com.test.ui.fav.FavCitiesListFragment"
-        android:label="@string/second_fragment_label"
+        android:name="com.test.ui.DetailsFragment"
+        android:label="CityDetailFragment"
         tools:layout="@layout/fragment_city_in_detail">
-
-        <action
-            android:id="@+id/action_CityDetailFragment_to_FavCitiesListGragment"
-            app:destination="@id/FavCitiesListFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/CityListFragment"
         android:name="com.test.ui.city.CityListFragment"
-        android:label="@string/first_fragment_label"
+        android:label="CityListFragment"
         tools:layout="@layout/fragment_city_list">
 
     </fragment>
