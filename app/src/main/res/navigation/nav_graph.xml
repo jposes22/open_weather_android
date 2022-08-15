@@ -26,7 +26,7 @@
         tools:layout="@layout/fragment_city_in_detail">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_CityDetailFragment_to_FavCitiesListGragment"
             app:destination="@id/FavCitiesListFragment" />
     </fragment>
 
