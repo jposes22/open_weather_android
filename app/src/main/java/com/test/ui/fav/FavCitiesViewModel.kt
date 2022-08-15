@@ -1,14 +1,18 @@
 package com.test.ui.fav
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.test.domain.converter.CityConverter
+import com.test.domain.model.model.CityListModel
 import com.test.domain.model.model.FavCityModel
 import com.test.domain.preferences.SharedPreferencesManager
 import com.test.domain.repository.CityRepository
 import com.test.domain.repository.WeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /*
@@ -26,5 +30,8 @@ class FavCitiesViewModel @Inject constructor(
         cityRepository.findAllFavourite().combine(weatherRepository.findAll()) { cityEntities, weatherEntities ->
                return@combine cityConverter.toFavModel(cityEntities,weatherEntities)
             }
+
+//    Opens City details
+//    fun selected city
 
 }

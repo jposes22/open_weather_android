@@ -39,25 +39,21 @@ class FavCitiesListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//         INFLATES BINDING?
         _binding = FragmentFavCitiesBinding.inflate(inflater, container, false)
-//        BINDS VIEWMODEL AND SOME SHIT NAMED LIFECYCLE
         _binding!!.viewModel = viewModel
         _binding!!.lifecycleOwner = viewLifecycleOwner
-
         val recyclerView = binding.recyclerViewFavCitiesList
-//        GIVES RECYCLER VIEW LINEAR LAYOUT PROPIERTIES¿?¿?¿?
+        //        GIVES RECYCLER VIEW LINEAR LAYOUT PROPERTIES¿?¿?¿?
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-
-//        MAGIC THAT WORKS AND NO-ONE KNOWS WHY
-        adapter = FavCitiesRecyclerViewAdapter(context!!,
-            citySelected = {
+//        OPEN CityDetailFragment on city click
+        adapter = FavCitiesRecyclerViewAdapter(context!!, citySelected = {
                 val bundle = bundleOf("cityId" to it.id)
                 findNavController().navigate(R.id.action_FavCitiesListFragment_to_CityDetailFragment, bundle)
-                //viewModel.selectedCity(it)}
+//                viewModel.citySelected(it)
             }
         )
+
         recyclerView.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -75,12 +71,12 @@ class FavCitiesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        binding.fab.setOnClickListener{
+            findNavController().navigate(R.id.action_FavCitiesListFragment_to_CityDetailFragment)
         }
 
         binding.fab.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_CityListFragment)
+            findNavController().navigate(R.id.action_FavCitiesListFragment_to_CityListFragment)
         }
     }
 
