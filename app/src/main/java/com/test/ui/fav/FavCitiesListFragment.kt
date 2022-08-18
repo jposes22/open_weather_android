@@ -17,9 +17,7 @@ import com.test.databinding.FragmentFavCitiesBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
+
 @AndroidEntryPoint
 class FavCitiesListFragment : Fragment() {
 
@@ -44,7 +42,6 @@ class FavCitiesListFragment : Fragment() {
         val recyclerView = binding.recyclerViewFavCitiesList
         //        GIVES RECYCLER VIEW LINEAR LAYOUT PROPERTIES¿?¿?¿?
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = FavCitiesRecyclerViewAdapter(context!!, citySelected = {viewModel.selectedCity(it)})
 
 //        OPEN CityDetailFragment on city click
         adapter = FavCitiesRecyclerViewAdapter(context!!, citySelected = {

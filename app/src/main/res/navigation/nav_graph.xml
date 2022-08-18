@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/CityDetailFragment"
-        android:name="com.test.ui.DetailsFragment"
+        android:name="com.test.ui.cityDetail.DetailsFragment"
         android:label="CityDetailFragment"
         tools:layout="@layout/fragment_city_in_detail">
     </fragment>
