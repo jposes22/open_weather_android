@@ -1,8 +1,12 @@
 package com.test.domain.model.model
 
+import java.util.*
+
 class FavCityModel {
+
     var id:Long? = null
     var name:String? = null
+    val date: Date? = null
     var latitude:Float? = null
     var longitude:Float? = null
     var temperature:Float? = null
