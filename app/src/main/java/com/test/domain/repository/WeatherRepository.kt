@@ -34,6 +34,9 @@ class WeatherRepository @Inject constructor(
             throw handleException(e)
         }
     }
+    fun findAllById(id:Long): Flow<WeatherEntity>{
+        return weatherDao.findById(id)
+    }
 
 
     fun findAll(): Flow<List<WeatherEntity>> {

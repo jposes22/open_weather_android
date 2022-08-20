@@ -11,4 +11,6 @@ interface WeatherDao: BaseDao<WeatherEntity>{
     @Query("select * from weatherentity")
     fun findAll(): Flow<List<WeatherEntity>>
 
+    @Query("select * from weatherentity where cityId = :id")
+    fun findById(id: Long): Flow<WeatherEntity>
 }
