@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_FavCitiesListFragment_to_CityDetailFragment"
             app:destination="@id/CityDetailFragment" />
+        <action
+            android:id="@+id/action_Navigate_to_PracticeFragment"
+            app:destination="@id/PracticeFragment" />
     </fragment>
 
     <fragment
@@ -28,6 +31,9 @@
         <action
             android:id="@+id/action_CityDetailFragment_to_FavCitiesListGragment"
             app:destination="@id/FavCitiesListFragment" />
+        <action
+            android:id="@+id/action_Navigate_to_PracticeFragment"
+            app:destination="@id/PracticeFragment" />
     </fragment>
 
     <fragment
@@ -35,6 +41,15 @@
         android:name="com.test.ui.city.CityListFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_city_list">
+        <action
+            android:id="@+id/action_Navigate_to_PracticeFragment"
+            app:destination="@id/PracticeFragment" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/PracticeFragment"
+        android:name="com.test.ui.practice.Practice1Fragment"
+        android:label="Practice 1"
+        tools:layout="@layout/fragment_practice1">
     </fragment>
 </navigation>

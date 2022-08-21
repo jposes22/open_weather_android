@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.practice.Practice1Fragment">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewTitleNo"
+            style="@style/TextAppearance.Material3.BodyLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Optimized Flow" />
+
+        <TextView
+            android:id="@+id/textViewFlowExample1Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Example 1: emit 4 values every 2 seconds" />
+
+        <TextView
+            android:id="@+id/textViewFlowExample1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textViewFlowExample2Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Example 2: with transform" />
+
+        <TextView
+            android:id="@+id/textViewFlowExample2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            style="@style/TextAppearance.Material3.BodyLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Optimized Flow" />
+
+        <TextView
+            android:id="@+id/textViewFlowExample3Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Example 1: emit 4 values every 2 seconds" />
+
+        <TextView
+            android:id="@+id/textViewFlowExample3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textViewFlowExample4Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Example 2: with transform" />
+
+        <TextView
+            android:id="@+id/textViewFlowExample4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
