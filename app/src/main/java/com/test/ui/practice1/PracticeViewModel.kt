@@ -1,16 +1,11 @@
-package com.test.ui.practice
+package com.test.ui.practice1
 
 import androidx.lifecycle.ViewModel
-import com.test.domain.converter.CityConverter
-import com.test.domain.repository.CityRepository
-import com.test.domain.repository.WeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.transform
-import kotlinx.coroutines.flow.transformLatest
 import javax.inject.Inject
 
 @HiltViewModel

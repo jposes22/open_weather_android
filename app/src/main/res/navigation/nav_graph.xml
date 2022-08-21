@@ -48,7 +48,7 @@
 
     <fragment
         android:id="@+id/PracticeFragment"
-        android:name="com.test.ui.practice.Practice1Fragment"
+        android:name="com.test.ui.practice1.Practice1Fragment"
         android:label="Practice 1"
         tools:layout="@layout/fragment_practice1">
     </fragment>
