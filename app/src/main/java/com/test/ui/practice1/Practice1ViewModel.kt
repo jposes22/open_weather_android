@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.transform
 import javax.inject.Inject
 
 @HiltViewModel
-class PracticeViewModel  @Inject constructor(
+class Practice1ViewModel  @Inject constructor(
 ): ViewModel(){
 
     val flowExample1 = flow<Int> {

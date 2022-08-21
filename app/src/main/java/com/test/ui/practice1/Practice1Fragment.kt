@@ -19,7 +19,7 @@ class Practice1Fragment : Fragment() {
     private var _binding: FragmentPractice1Binding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: PracticeViewModel by viewModels()
+    private val viewModel: Practice1ViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
