@@ -37,6 +37,9 @@ class Practice2Fragment : Fragment() {
                     viewModel.fruitList.collect{ listFruits ->
                         binding.textViewPractice2.text = listFruits.joinToString (",")
                     }
+                    viewModel.fruitNumber.collect{
+                        binding.textViewPractice2CountOfFruits.text = it.toString()
+                    }
                 }
             }
         }
