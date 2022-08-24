@@ -48,17 +48,21 @@ class CityConverter @Inject constructor(){
         }
     }
 
-    fun toFavModel(citiesEntity: CityEntity,weatherEntity: WeatherEntity?):FavCityModel{
+    fun toFavModel(citiesEntity: CityEntity?,weatherEntity: WeatherEntity?):FavCityModel{
         val favCityModel = FavCityModel()
-        favCityModel.id = citiesEntity.id
-        favCityModel.name = citiesEntity.name
-        favCityModel.latitude = citiesEntity.latitude
-        favCityModel.longitude = citiesEntity.longitude
-        favCityModel.temperature = weatherEntity?.temperature
-        favCityModel.humidity = weatherEntity?.humidity
-        favCityModel.maxTemperature = weatherEntity?.maxTemperature
-        favCityModel.minTemperature = weatherEntity?.minTemperature
-        favCityModel.iconCode = weatherEntity?.iconCode
+//        TODO: IF SHOULDNT BE HERE
+        if (citiesEntity != null) {
+            favCityModel.id = citiesEntity.id
+            favCityModel.name = citiesEntity.name
+            favCityModel.latitude = citiesEntity.latitude
+            favCityModel.longitude = citiesEntity.longitude
+            favCityModel.temperature = weatherEntity?.temperature
+            favCityModel.humidity = weatherEntity?.humidity
+            favCityModel.maxTemperature = weatherEntity?.maxTemperature
+            favCityModel.minTemperature = weatherEntity?.minTemperature
+            favCityModel.iconCode = weatherEntity?.iconCode
+        }
+
         return favCityModel
     }
 }

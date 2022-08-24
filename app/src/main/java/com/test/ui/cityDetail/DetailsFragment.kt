@@ -36,48 +36,55 @@ class DetailsFragment (): Fragment() {
     ): View? {
         _binding = FragmentCityInDetailBinding.inflate(inflater, container, false)
 
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-//
-//                viewModel.getCityFlow(arguments?.getLong("cityId")!!).collectLatest {
-//                        cityEntity : CityEntity ->
-//                    binding.textViewName.text = cityEntity.name
-//                    binding.textViewLatitude.text = cityEntity.latitude.toString()
-//                    binding.textViewLongitude.text = cityEntity.longitude.toString()
-//                }
-//            }
-//        }
-//
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-//
-//                viewModel.getCityWeather(arguments?.getLong("cityId")!!).collectLatest {
-//                        weatherEntity : WeatherEntity ->
-//                    binding.textViewMaxTemp.text = weatherEntity.maxTemperature.toString()
-//                    binding.textViewMinTemp.text = weatherEntity.minTemperature.toString()
-//                    binding.textViewTemp.text = weatherEntity.temperature.toString()
-//                    binding.textViewHumidity.text = weatherEntity.humidity.toString()
-//                    binding.textViewDate.text = weatherEntity.date.toString()
-//                }
-//            }
-//        }
-
         viewLifecycleOwner.lifecycleScope.launch{
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
                 viewModel.getDetails(arguments?.getLong("cityId")!!).collectLatest {
                     cityDetail : FavCityModel ->
                     binding.textViewName.text = cityDetail.name
+                    binding.textViewDate.text = cityDetail.date.toString()
                     binding.textViewMaxTemp.text = cityDetail.maxTemperature.toString()
                     binding.textViewMinTemp.text = cityDetail.minTemperature.toString()
                     binding.textViewTemp.text = cityDetail.temperature.toString()
                     binding.textViewHumidity.text = cityDetail.humidity.toString()
-                    binding.textViewDate.text = cityDetail.date.toString()
                     binding.textViewLatitude.text = cityDetail.latitude.toString()
                     binding.textViewLongitude.text = cityDetail.longitude.toString()
 
                 }
             }
         }
+//        viewLifecycleOwner.lifecycleScope.launch{
+//            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
+//                viewModel.getDetailsMerge(arguments?.getLong("cityId")!!).collectLatest {
+//                    cityDetail : FavCityModel ->
+//                    binding.textViewName.text = cityDetail.name
+//                    binding.textViewDate.text = cityDetail.date.toString()
+//                    binding.textViewMaxTemp.text = cityDetail.maxTemperature.toString()
+//                    binding.textViewMinTemp.text = cityDetail.minTemperature.toString()
+//                    binding.textViewTemp.text = cityDetail.temperature.toString()
+//                    binding.textViewHumidity.text = cityDetail.humidity.toString()
+//                    binding.textViewLatitude.text = cityDetail.latitude.toString()
+//                    binding.textViewLongitude.text = cityDetail.longitude.toString()
+//
+//                }
+//            }
+//        }
+
+//        viewLifecycleOwner.lifecycleScope.launch{
+//            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
+//                viewModel.getDetailsMergeNoFlow(arguments?.getLong("cityId")!!).collectLatest {
+//                    cityDetail : FavCityModel ->
+//                    binding.textViewName.text = cityDetail.name
+//                    binding.textViewDate.text = cityDetail.date.toString()
+//                    binding.textViewMaxTemp.text = cityDetail.maxTemperature.toString()
+//                    binding.textViewMinTemp.text = cityDetail.minTemperature.toString()
+//                    binding.textViewTemp.text = cityDetail.temperature.toString()
+//                    binding.textViewHumidity.text = cityDetail.humidity.toString()
+//                    binding.textViewLatitude.text = cityDetail.latitude.toString()
+//                    binding.textViewLongitude.text = cityDetail.longitude.toString()
+//
+//                }
+//            }
+//        }
 
             return binding.root
         }
