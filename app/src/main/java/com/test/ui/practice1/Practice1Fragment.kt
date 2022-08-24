@@ -55,11 +55,11 @@ class Practice1Fragment : Fragment() {
                     binding.textViewFlowExample4.text = it.toString()
                 }
                 //FINISH this exercise
-//                launch {
-//                    viewModel.flowExample3.collect{
-//
-//                    }
-//                }
+                launch {
+                    viewModel.flowExample3.collect{
+                        binding.textViewExample31.text = it.toString()
+                    }
+                }
 
 
             }

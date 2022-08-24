@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.transform
 import javax.inject.Inject
@@ -27,6 +28,8 @@ class Practice1ViewModel  @Inject constructor(
     }
 
     //TODO: you must implement all time sum of flowExample1 and flowExample2 and show on screen
-    //val flowExample3:Flow<Float> =
+    val flowExample3:Flow<Float> = flowExample1.combine(flowExample2){flowExample1, flowExample2->
+        flowExample1.toFloat() + flowExample2
+    }
 
 }
