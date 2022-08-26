@@ -3,7 +3,6 @@ package com.test.ui.main
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -68,6 +67,11 @@ class MainActivity : AppCompatActivity() {
             R.id.action_menu_practice_2 -> {
                 val navController = findNavController(R.id.nav_host_fragment_content_main)
                 navController.navigate(R.id.action_Navigate_to_PracticeFragment2)
+                true
+            }
+            R.id.action_menu_practice3->{
+                val navController = findNavController(R.id.nav_host_fragment_content_main)
+                navController.navigate(R.id.action_Navigate_to_PracticeFragment3)
                 true
             }
             else -> super.onOptionsItemSelected(item)

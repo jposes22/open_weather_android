@@ -13,4 +13,9 @@
         android:orderInCategory="100"
         android:title="Practice 2"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_menu_practice3"
+        android:orderInCategory="100"
+        android:title="Practice 3"
+        app:showAsAction="never"/>
 </menu>

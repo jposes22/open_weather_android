@@ -47,6 +47,11 @@ class Practice1Fragment : Fragment() {
                         binding.textViewFlowExample2.text = it.toString()
                     }
                 }
+                //FINISH this exercise
+                launch {
+                    viewModel.flowExample3.collect {
+                        binding.textViewExample31.text = it.toString()
+                    }
                 //Bad practice with multiple collect
                 viewModel.flowExample1.collect {
                     binding.textViewFlowExample3.text = it.toString()
@@ -54,13 +59,8 @@ class Practice1Fragment : Fragment() {
                 viewModel.flowExample2.collect {
                     binding.textViewFlowExample4.text = it.toString()
                 }
-                //FINISH this exercise
-                launch {
-                    viewModel.flowExample3.collect{
-                        binding.textViewExample31.text = it.toString()
-                    }
-                }
 
+                }
 
             }
         }

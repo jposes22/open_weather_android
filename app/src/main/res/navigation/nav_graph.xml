@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_Navigate_to_PracticeFragment2"
             app:destination="@id/Practice2Fragment" />
+
+        <action android:id="@+id/action_Navigate_to_PracticeFragment3"
+            app:destination="@+id/Practice3Fragment"/>
     </fragment>
 
     <fragment
@@ -71,4 +74,9 @@
         android:label="Practice 2"
         tools:layout="@layout/fragment_practice2">
     </fragment>
+    <fragment
+        android:id="@+id/Practice3Fragment"
+        android:name="com.test.ui.practice3.Practice3Fragment"
+        android:label="Practice 3"
+        tools:layout="@layout/fragment_practice3"/>
 </navigation>

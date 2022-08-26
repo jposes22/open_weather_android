@@ -88,12 +88,6 @@
                 android:text="Flow III: The Revenge" />
 
             <TextView
-                android:id="@+id/textViewFlowExample1Title2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Example 1: emit 4 values every 2 seconds" />
-
-            <TextView
                 android:id="@+id/textView_example_3.1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

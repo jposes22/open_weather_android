@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.test.databinding.FragmentPractice2Binding
 import kotlinx.coroutines.launch
 
@@ -31,17 +29,30 @@ class Practice2Fragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentPractice2Binding.inflate(inflater, container, false)
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch {
-                    viewModel.fruitList.collect{ listFruits ->
-                        binding.textViewPractice2.text = listFruits.joinToString (",")
-                    }
-                    viewModel.fruitNumber.collect{
-                        binding.textViewPractice2CountOfFruits.text = it.toString()
-                    }
-                }
-            }
+//  FLOW
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                launch {
+//                    viewModel.fruitList.collect{ listFruits ->
+//                        binding.textViewPractice2.text = listFruits.joinToString (",")
+//                    }
+//                    viewModel.fruitNumber.collect{
+//                        binding.textViewPractice2CountOfFruits.text = it.toString()
+//                    }
+//                }
+//            }
+//        }
+//        LIVEDATA
+    viewLifecycleOwner.lifecycleScope.launch {
+        viewModel.fruitList.collect {
+            binding.textViewPractice2.text = it.toString()
+
+        }
+}
+
+        binding.btnAdd.setOnClickListener{
+
+
         }
         return binding.root
     }
